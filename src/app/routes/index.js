@@ -16,6 +16,7 @@ routeFiles.push(require('./default.js'));
 
 routeFiles.push(require('./../components/center/route.js'));
 
+routeFiles.push(require('./../components/auth/route.js'));
 //------------------------------
 
 // parse routes file, and add route info to routes array

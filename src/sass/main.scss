@@ -17,14 +17,18 @@ body {
   color: $black;
 }
 
-#center-wrapper {
+#scroll-wrapper {
   position: absolute;
   z-index: 1;
   top: 0;
   left: 0;
-  bottom: 70px;
+  bottom: 60px;
   overflow: hidden;
   width: 100%;
+  &.full {
+    bottom: 0;
+    top: 0;
+  }
 }
 
 #scroller {
@@ -73,8 +77,8 @@ $font-size-list: 10, 12, 14, 15, 16, 18, 20, 22, 24, 26, 28, 30;
   border-radius: 2px;
   font-size: 12px;
   &.label-default {
-    border-color: $grey;
-    color: $grey;
+    border-color: $deepGrey;
+    color: $deepGrey;
   }
 }
 
@@ -98,7 +102,7 @@ ul {
     margin-bottom: 0;
     text-align: center;
     padding: 0;
-    background-color: $black;
+    background-color: $deepBlack;
     height: 50px;
     font-size: 16px;
     color: $white;
@@ -110,8 +114,8 @@ ul {
       overflow: hidden;
       &.active {
         height: 46px;
-        color: $yellow;
-        border-bottom:solid 4px $yellow;
+        color: $blue;
+        border-bottom:solid 4px $blue;
       }
     }
     &.horizontal-nav-3 {
@@ -129,7 +133,7 @@ ul {
     z-index: 2;
     bottom: 0;
     background-color: $white;
-    height: 70px;
+    height: 60px;
     text-align: center;
     box-shadow: 0 -2px 2px 0 rgba(0, 0, 0, .06);
     ul {
@@ -138,43 +142,43 @@ ul {
         li {
             list-style: none;
             font-size: 12px;
-            height: 70px;
-            padding-top: 45px;
+            height: 60px;
+            padding-top: 40px;
             width: 20%;
             float: left;
             overflow: hidden;
             $footer-bar-icon-list: course, exam, play, cert, me;
             @each $icon in $footer-bar-icon-list {
               &.#{$icon} {
-                background-image: url("../../public/images/#{$icon}.png");
+                background-image: url("../images/#{$icon}.png");
                 background-repeat: no-repeat;
-                background-position: center 10px;
-                background-size: 30px 30px;
+                background-position: center 7px;
+                background-size: 28px 28px;
               }
             }
             @each $icon in $footer-bar-icon-list {
               &.#{$icon}.active {
                 @if $icon!=play {
-                  background-image: url("../../public/images/#{$icon}_active.png");
+                  background-image: url("../images/#{$icon}_active.png");
                   background-repeat: no-repeat;
-                  background-position: center 10px;
-                  background-size: 30px 30px;
+                  background-position: center 7px;
+                  background-size: 28px 28px;
                 }
               }
             }
             a {
-              padding: 45px 20%;
+              padding: 40px 20%;
             }
             &.play {
-              margin-top: -30px;
-              padding-top: 75px;
+              margin-top: -20px;
+              padding-top: 60px;
               background-position: center top;
-              background-size: 80px;
+              background-size: 65px;
               border: 0 solid transparent;
               border-top-left-radius: 100px;
               border-top-right-radius: 100px;
               a {
-                padding-top: 70px;
+                padding-top: 60px;
               }
             }
         }
@@ -197,7 +201,7 @@ ul {
       color: $black;
     }
     .desc-content {
-      color: #888;
+      color: $deepGrey;
       position: absolute;
       padding-left: 10px;
     }
@@ -230,3 +234,85 @@ ul {
     padding-bottom: 20px;
   }
 }
+
+.cell {
+  width: 100%;
+  overflow: hidden;
+  &.cell-center {
+    text-align: center;
+  }
+}
+
+.row-input {
+  width: 100%;
+  padding: 15px 20px;
+  background: $white;
+  color: inherit;
+  border: 0 solid transparent;
+  overflow: hidden;
+  height: 1.4em;
+  line-height: 1.4;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.aq-btn {
+  background-color: #fff;
+  color: inherit;
+  text-align: center;
+  border-color: transparent;
+  border-width: 0;
+  padding: 6px 30px;
+  border-radius: 4px;
+  &.aq-btn-default {
+    color: $white;
+    background-color: #a9a9a9;
+  }
+  &.aq-btn-info {
+    color: $white;
+    background-color: $blue;
+  }
+  &.aq-btn-bg {
+    font-size: 25px;
+    letter-spacing: 25px;
+    padding-right: 5px;
+  }
+  &.block-btn {
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 90%;
+  }
+}
+
+.logo-wrapper {
+  margin-top: 60px;
+  margin-bottom: 60px;
+  text-align: center;
+  img {
+    width: 70%;
+    max-width: 400px;
+  }
+}
+
+.contact-wrapper {
+  position: relative;
+  padding: 6px 0 6px 20px;
+  border: 1px solid #a9a9a9;
+  border-radius: 3px;
+  color: #a9a9a9;
+  text-align: center;
+  font-size: 16px;
+  width: 250px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 70px;
+  img {
+    position: absolute;
+    left: 20px;
+    top: 5px;
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+  }
+}
+

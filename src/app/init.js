@@ -2,6 +2,7 @@
  * Created by top on 15-11-9.
  */
 var Store = require('store');
+var routes = require('./routes/index.js');
 var _ = require('./util');
 var ajax = _.ajax;
 
@@ -11,9 +12,19 @@ var user = null;
 var title = '';
 // Vue instances
 var vms = [];
+// router
+var router = null;
 
 function defineVmProperties(Vue) {
     Object.defineProperties(Vue.prototype, {
+        $router: {
+            get: function () {
+                return router;
+            },
+            set: function (obj) {
+                router = obj;
+            }
+        },
         $ajax : {
             get : function () {
                 var obj = {};
@@ -77,13 +88,40 @@ function getUserDataKeyInVm(vm) {
     return name;
 }
 
-module.exports = function (Vue) {
+function routerInit() {
+    router.map(routes);
+    router.beforeEach(function (transition) {
+        var user = router.app.$user;
+        var auth = transition.to.auth;
+        if (auth === false) {
+            transition.next();
+        } else {
+            if (user) {
+                transition.next();
+            } else {
+                router.go('/login');
+            }
+        }
+    });
+    router.redirect({
+        '*': '/center/play'
+    })
+}
 
+module.exports = function (opts) {
+    // step1
     // remove token from store.js
     if (Store.has('token')) {
         Store.remove('token');
     }
 
-    //define properties for every Vue instance
+    // step2
+    // define properties for every Vue instance
+    var Vue = opts.vue;
     defineVmProperties(Vue);
+
+    // step3
+    // init router
+    router = opts.router;
+    routerInit();
 };

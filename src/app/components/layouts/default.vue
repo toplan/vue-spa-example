@@ -1,5 +1,5 @@
 <template>
-    <div id="center-wrapper">
+    <div id="scroll-wrapper">
         <div id="scroller">
         <router-view></router-view>
         </div>
@@ -8,37 +8,19 @@
 </template>
 <script>
     var footerBarComponent = require('../blocks/footerBar.vue');
-
+    var _ = require('../../util');
     module.exports = {
         data : function () {
             return {
                 activeFooterBar : ''
             };
         },
-        ready : function () {
-            // load iscroll
-            this.loadIscroll();
-            //
-        },
         watch : {
             'activeFooterBar' : function (val, oldVal) {
-                if (window.centerScroll) {
-                    window.centerScroll.refresh();
-                }
-                this.$broadcast('active', val);
-            }
-        },
-        methods : {
-            loadIscroll : function () {
-                window.centerScroll = new IScroll('#center-wrapper', {
-                    scrollbars: true,
-                    mouseWheel: true,
-                    interactiveScrollbars: true,
-                    shrinkScrollbars: 'scale',
-                    fadeScrollbars: true
+                _.refreshScroll({
+                    alias: 'person-center'
                 });
-                //if you want to refresh personal center scroll bar,
-                //please use window.centerScroll.refresh().
+                this.$broadcast('active', val);
             }
         },
         components: {

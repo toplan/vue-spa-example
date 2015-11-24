@@ -17,11 +17,6 @@ Vue.use(VueRouter);
 Vue.use(VueResource);
 
 /*
- * app init
- */
-init(Vue);
-
-/*
  * create router instance
  */
 var router = new VueRouter({
@@ -29,21 +24,11 @@ var router = new VueRouter({
 });
 
 /*
- * router init
+ * app init
  */
-router.map(require('./routes/index.js'));
-router.beforeEach(function (transition) {
-    var user = router.app.$user;
-    var auth = transition.to.auth;
-    if (auth === false) {
-        transition.next();
-    } else {
-        if (user) {
-            transition.next();
-        } else {
-            router.go('/login');
-        }
-    }
+init({
+    vue: Vue,
+    router: router
 });
 
 module.exports = {

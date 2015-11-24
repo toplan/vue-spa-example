@@ -52,3 +52,48 @@ module.exports.getUser = function () {
 module.exports.setTitle = function (title) {
     window.document.title = title;
 };
+
+function getProperty(key, obj) {
+    if (typeof obj != 'object') {
+        obj = {};
+    }
+    try {
+        if (key in obj) {
+            return obj[key];
+        }
+    } catch(e) {}
+    return null;
+}
+
+module.exports.getProperty = function (key, obj) {
+    return getProperty(key, obj);
+};
+
+var appScroll = {};
+module.exports.refreshScroll = function (opts) {
+    var wrapper = getProperty('wrapper', opts);
+    var alias = getProperty('alias', opts);
+    if (!wrapper) {
+        wrapper = '#scroll-wrapper';
+    }
+    if (document.querySelector(wrapper)) {
+        var scroll = null;
+        var name = alias || wrapper;
+        if (name in appScroll) {
+            scroll = appScroll[name];
+        }
+        if (!scroll) {
+            //if you want to refresh personal center scroll bar,
+            //please use method refresh().
+            appScroll[name] = new IScroll(wrapper, {
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true
+            });
+        } else {
+            scroll.refresh();
+        }
+    }
+};
