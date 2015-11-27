@@ -47,7 +47,8 @@
     var footerBarName = 'play';
     module.exports = {
         ready: function () {
-            this.$parent.$data.activeFooterBar = footerBarName
+            this.$dispatch('updateActiveFooterBar', footerBarName);
+            this.$dispatch('refreshScroll');
         }
     }
 </script>

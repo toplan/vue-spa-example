@@ -9,18 +9,23 @@
 <script>
     var footerBarComponent = require('../blocks/footerBar.vue');
     var _ = require('../../util');
+
     module.exports = {
         data : function () {
             return {
-                activeFooterBar : ''
             };
         },
-        watch : {
-            'activeFooterBar' : function (val, oldVal) {
-                _.refreshScroll({
-                    alias: 'person-center'
+        events: {
+            'updateActiveFooterBar': function (barName) {
+                this.$broadcast('active', barName);
+                return false;
+            },
+            'refreshScroll': function () {
+                 _.refreshScroll({
+                    alias: 'person-center',
+                    top: 0
                 });
-                this.$broadcast('active', val);
+                return false;
             }
         },
         components: {

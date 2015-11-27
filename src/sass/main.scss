@@ -80,6 +80,27 @@ $font-size-list: 10, 12, 14, 15, 16, 18, 20, 22, 24, 26, 28, 30;
     border-color: $deepGrey;
     color: $deepGrey;
   }
+  &.label-info {
+    border-color: $blue;
+    color: $blue;
+  }
+  &.label-danger {
+    border-color: $originRed;
+    color: $originRed;
+  }
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.pull-left {
+  float: left;
+}
+
+.pull-right {
+  float: right;
 }
 
 .row {
@@ -87,13 +108,16 @@ $font-size-list: 10, 12, 14, 15, 16, 18, 20, 22, 24, 26, 28, 30;
   background: $white;
 }
 
+a {
+  text-decoration: none;
+  list-style: none;
+}
+
 ul {
   a {
     @each $class in $pseudo-class-list{
       &:#{$class} {
-        text-decoration: none;
         color: $black;
-        list-style: none;
       }
     }
   }
@@ -316,3 +340,77 @@ ul {
   }
 }
 
+.class-list{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  padding-top: 5px;
+  .item-header {
+    margin: 0 -20px 10px -20px;
+    font-size: 18px;
+    padding: 0 20px 5px 20px;
+    border-bottom: 1px solid $grey;
+    font-weight: bold;
+  }
+  .item-info {
+    .title {
+      color: $deepGrey;
+      margin-right: 0;
+    }
+    p span {
+      margin-right: 10px;
+    }
+    .aq-progress-wrapper {
+      margin-top: -15px;
+      margin-left: 85px;
+    }
+  }
+  .item-course {
+    .item-course-header {
+      margin: 0 -20px;
+      padding: 5px 20px;
+      border-bottom: 1px solid $grey;
+      border-top: 1px solid $grey;
+      font-size: 18px;
+      .more-tag {
+        float: right;
+        color: $blue;
+        background-color: transparent;
+        border-color: transparent;
+        font-size: 18px;
+        margin-top: -3px;
+      }
+    }
+    .info {
+      width: 100%;
+      margin-top: 10px;
+      .info-left {
+        width: 35%;
+        display: table-cell;
+        vertical-align: top;
+        img {
+          width: 100%;
+          box-shadow: 0 1px 2px rgba(0, 0, 0, .22);
+        }
+      }
+      .info-right{
+        width: 65%;
+        display: table-cell;
+        vertical-align: top;
+        padding-left: 20px;
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+.aq-progress-wrapper {
+  height: 10px;
+  background: $grey;
+  padding: 2px;
+  .aq-progress {
+    height: 10px;
+    width: 50%;
+    background: $originRed;
+  }
+}

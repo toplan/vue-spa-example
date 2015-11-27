@@ -73,6 +73,7 @@ var appScroll = {};
 module.exports.refreshScroll = function (opts) {
     var wrapper = getProperty('wrapper', opts);
     var alias = getProperty('alias', opts);
+    var top = getProperty('top', opts);// must be integer
     if (!wrapper) {
         wrapper = '#scroll-wrapper';
     }
@@ -94,6 +95,10 @@ module.exports.refreshScroll = function (opts) {
             });
         } else {
             scroll.refresh();
+            if (top != null && top != undefined) {
+                // scrollTo(x, y, time, easing)
+                scroll.scrollTo(0, top)
+            }
         }
     }
 };

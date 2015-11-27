@@ -11,6 +11,9 @@ module.exports = {
             },
             '/courses' : {
                 component : require('./courses/list.vue')
+            },
+            '/class-courses' : {
+                component: require('./courses/class_courses.vue')
             }
         }
     }
