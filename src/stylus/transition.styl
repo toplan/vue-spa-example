@@ -1,0 +1,39 @@
+/*
+ * 全局公共动画
+ */
+@import "variables.styl";
+
+.fixed-default-transition
+  transition: all .3s ease
+  position: fixed
+  z-index: 600
+  overflow: hidden
+  left: 0
+  top: 0
+  right: 0
+  bottom: 0
+  border-left: 0 solid $deepGray
+  border-right: 0 solid $deepGray
+  border-width: 0
+  .app-header
+    position: relative
+    z-index: 610
+.fixed-default-enter
+  right: 0
+  left: 100%
+  border-width: 1px
+  .app-header
+    position: relative
+.fixed-default-leave
+  right: 100%
+  left: -100%
+  border-width: 1px
+  .app-header
+    position: relative
+
+.cover-in-transition
+  transition: all .3s ease
+  opacity: 1
+.cover-in-enter, .cover-in-leave
+  opacity: 0
+  -moz-opacity: 0;
