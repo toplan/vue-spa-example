@@ -3,7 +3,7 @@
 </template>
 
 <script>
-var Style = require('./components/Style.vue')
+var Style = require('./components/style.vue')
 
 module.exports = {
   data: function () {

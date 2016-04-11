@@ -50,18 +50,6 @@ module.exports.stringify = function (json) {
 module.exports.time = {
   now: function () {
     return Date.now()
-  },
-  getHours: function (value, trans) {
-    var v = new Date(value).getHours() - 8
-    return !trans ? v : v < 10 ? '0' + v : v
-  },
-  getMinutes: function (value, trans) {
-    var v = new Date(value).getMinutes()
-    return !trans ? v : v < 10 ? '0' + v : v
-  },
-  getSeconds: function (value, trans) {
-    var v = new Date(value).getSeconds()
-    return !trans ? v : v < 10 ? '0' + v : v
   }
 }
 
