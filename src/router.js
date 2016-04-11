@@ -27,7 +27,7 @@ router.beforeEach(function (transition) {
     if (true) {
       transition.next()
     } else {
-      transition.to.router.go(loginPath)
+      transition.to.router.go('/login')
     }
   }
 })

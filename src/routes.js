@@ -4,6 +4,7 @@
 module.exports = {
   '/': {
     auth: false,
+    history: false,
     component: require('./App.vue')
   }
 }
