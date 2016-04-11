@@ -3,6 +3,7 @@
  */
 module.exports = {
   name: 'ti_ku_student_end',
+  debug: true,
   api: {
     root: 'http://...',
     version: 'v1'

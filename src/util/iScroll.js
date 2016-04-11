@@ -15,6 +15,9 @@ function refreshByKey (key, top) {
   }
   setTimeout(function () {
     instance.refresh()
+    if (top === undefined) {
+      return
+    }
     top = parseFloat(top || 0)
     if (!isNaN(top)) {
       // 初始化滑块:scrollTo(x, y, time, easing)
@@ -32,6 +35,8 @@ function destroyByKey (key) {
     return
   }
   instance.destroy()
+  instance._events = {}
+  instance = null
   instances[key] = null
 }
 
